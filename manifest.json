@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Brightspace Special Access Improver",
+    "version": "0.0.1",
+    "description": "Add improvements to the UI of the Manage Special Access assessments feature.",
+    "icons": {
+        "16": "images/icon-16.png",
+        "32": "images/icon-32.png",
+        "48": "images/icon-48.png",
+        "128": "images/icon-128.png"
+    },
+    "content_scripts": [
+        {
+            "js": ["scripts/content.js"],
+            "matches": ["http://*/*", "https://*/*"]
+        }
+    ],
+    "author": "Stephen Peasley",  
+    "homepage_url": "https://github.com/speasley/brightspace-special-access-improver-chrome"
+  }
