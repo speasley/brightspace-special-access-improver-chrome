@@ -25,28 +25,57 @@ function startObserver() {
 }
 
 function modifyIframeContent(modal) {
-    const prefix = "Brightspace Special Access Improver:";
-    // Get the iframe inside the modal
     const iframe = modal.querySelector('iframe');
 
     if (iframe) {
-        // Ensure the iframe content is fully loaded
         iframe.addEventListener('load', () => {
-            console.log(`${prefix} iframe loaded, modifying content...`);
-            
             const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-            
             const specialAccessTable = iframeDocument.querySelector('#z_e');
             
             if (specialAccessTable) {
                 injectCustomStyles(iframeDocument);
-            } else {
-                console.log(`${prefix} Table not found inside iframe.`);
+                addTriggerButtonToFirstTd(iframeDocument);
             }
         });
-    } else {
-        console.log(`${prefix} iframe not found inside modal.`);
     }
+}
+
+function addTriggerButtonToFirstTd(iframeDocument) {
+    const firstRowFirstTd = iframeDocument.querySelector('#z_e tbody tr td:first-child');
+    
+    if (firstRowFirstTd) {
+        const triggerButton = iframeDocument.createElement('button');
+        triggerButton.type = 'button';
+        triggerButton.className = 'd2l-button';
+        triggerButton.innerText = 'Remove All Users from Special Access';
+        triggerButton.style.background = 'transparent';
+        triggerButton.style.border = '1px solid red';
+        triggerButton.style.color = ' red';
+        triggerButton.style.marginLeft = '10px';
+
+        firstRowFirstTd.appendChild(triggerButton);
+
+        triggerButton.addEventListener('click', () => {
+            clickAllRemoveAnchors(iframeDocument);
+            triggerButton.blur();
+        });
+    }
+}
+
+function clickAllRemoveAnchors(iframeDocument) {
+    const rows = iframeDocument.querySelectorAll('#z_e tbody tr');
+    
+    rows.forEach((row) => {
+        const thirdCell = row.querySelectorAll('td.dcs_c')[2];  // Get the third .dcs_c cell
+        
+        if (thirdCell) {
+            const anchor = thirdCell.querySelector('a');
+            
+            if (anchor) {
+                anchor.click();
+            }
+        }
+    });
 }
 
 function injectCustomStyles(iframeDocument) {
