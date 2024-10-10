@@ -1,0 +1,7 @@
+.gitignore
+.zipignore
+.zipper
+*.md
+*.psd
+screenshot*.*
+small*.*

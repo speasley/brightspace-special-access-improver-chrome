@@ -1,0 +1,1 @@
+zip -r ~/Desktop/"$(basename "$PWD").zip" . -x './.git/*' $(cat .zipignore | sed 's|^|./|' | xargs -I{} echo -x {})
