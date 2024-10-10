@@ -1,5 +1,7 @@
 # Brightspace Special Access Improver Chrome Extension
 
+> ⚠️ **NOTE:** Due to the use of JavaScript's `click()` method to trigger Brightspace's special-access removal buttons, this extension fails to satisfy Chrome Web Store's Content Security Policy (CSP), which makes it ineligible for approval. It therefore cannot be installed via the Web Store and must be installed manually (see below).
+
 ## Description
 **Brightspace Special Access Improver** adds improvements to the UI of the Manage Special Access assessments feature in [D2L Brightspace Learning Management System](https://www.d2l.com/brightspace/) UI:
 
@@ -7,14 +9,6 @@
 * fix overlap conflict between 'remove' buttons and scroll pane
 
 ## Installation
-
-### From the Chrome Web Store (Recommended)
-
-1. Visit the [Brightspace Special Access Improver extension page](https://chromewebstore.google.com/detail/brightspace-special-access-improver/).
-
-2. Click the "Add to Chrome" button.
-
-3. Follow the on-screen instructions to complete the installation.
 
 ### Manual Installation
 
